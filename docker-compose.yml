@@ -7,11 +7,11 @@ services:
       dockerfile: Dockerfile.ros
     entrypoint: ["/bin/bash", "-c"]
     command:
-      - "source /opt/ros/noetic/setup.bash && survive-cli --force-calibrate"
+      - "source /opt/ros/noetic/setup.bash && mkdir -p /root/.config/libsurvive && rm -f /root/.config/libsurvive/config.json && survive-cli --force-calibrate"
     privileged: true
     volumes:
       - /dev:/dev
-      - ./survive-config:/root/.config
+      - ${HOME}/.config/libsurvive:/root/.config/libsurvive
 
   libsurvive-viz:
     build:
@@ -25,4 +25,4 @@ services:
       - "8080:8080"
     volumes:
       - /dev:/dev
-      - ./survive-config:/root/.config
+      - ${HOME}/.config/libsurvive:/root/.config/libsurvive
