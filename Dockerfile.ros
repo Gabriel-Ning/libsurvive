@@ -15,6 +15,12 @@ RUN --mount=type=cache,target=/var/cache/apt --mount=type=cache,target=/var/lib/
 
 SHELL ["/bin/bash", "-c"]
 
+RUN --mount=type=cache,target=/var/cache/apt --mount=type=cache,target=/var/lib/apt \
+    apt update && apt-get install --no-install-recommends -y wget unzip && \
+    wget -q https://github.com/joewalnes/websocketd/releases/download/v0.4.1/websocketd-0.4.1-linux_amd64.zip \
+    && unzip websocketd-0.4.1-linux_amd64.zip websocketd -d /usr/local/bin/ \
+    && rm websocketd-0.4.1-linux_amd64.zip
+
 RUN --mount=type=bind,target=/source,source=.,rw --mount=type=cache,target=/build/libsurvive,id=build-survive \
     mkdir -p /build/libsurvive && \
     source "/opt/ros/noetic/setup.bash" && \

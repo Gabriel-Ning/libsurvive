@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  libsurvive:
+    build:
+      context: .
+      dockerfile: Dockerfile.ros
+    entrypoint: ["/bin/bash", "-c"]
+    command:
+      - "source /opt/ros/noetic/setup.bash && survive-cli --force-calibrate"
+    privileged: true
+    volumes:
+      - /dev:/dev
+      - ./survive-config:/root/.config
+
+  libsurvive-viz:
+    build:
+      context: .
+      dockerfile: Dockerfile.ros
+    entrypoint: ["/bin/bash", "-c"]
+    command:
+      - "source /opt/ros/noetic/setup.bash && websocketd --port 8080 survive-cli --record-stdout --record-cal-imu --report-covariance 30"
+    privileged: true
+    ports:
+      - "8080:8080"
+    volumes:
+      - /dev:/dev
+      - ./survive-config:/root/.config
