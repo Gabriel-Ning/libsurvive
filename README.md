@@ -21,6 +21,7 @@ Table of Contents
 
    * [Quick start](#quick-start)
       * [Debian](#debian)
+      * [Docker](#docker)
       * [Windows](#windows)
    * [Current Status](#current-status)
    * [Roadmap](#roadmap)
@@ -68,6 +69,33 @@ For visualization, you can either download a binary of [websocketd](https://gith
 ```
 
 [![Watch video](https://img.youtube.com/vi/l4doRSXM0tU/0.jpg)](https://www.youtube.com/watch?v=l4doRSXM0tU)
+
+## Docker
+
+> **Tip:** This is the fastest way to get up and running — no manual dependency installation required.
+
+A pre-configured Docker image is provided via `Dockerfile.ros` and `docker-compose.yml`.
+
+**Prerequisites:** Docker Engine with BuildKit support (Docker 20.10+).
+
+First copy the udev rules so the container can access USB devices:
+```
+sudo cp ./useful_files/81-vive.rules /etc/udev/rules.d/
+sudo udevadm control --reload-rules && sudo udevadm trigger
+```
+
+Plug in your headset / tracker / controller, then **run and calibrate**:
+```
+docker compose run --rm libsurvive
+```
+
+To stream pose data over WebSocket for the visualization tool (port 8080):
+```
+docker compose up libsurvive-viz
+```
+Then open `./tools/viz/index.html` in a browser and point it at `ws://localhost:8080`.
+
+Calibration data is persisted in `./survive-config/` on the host so subsequent runs are faster.
 
 ## Windows
 
