@@ -1153,7 +1153,7 @@ $(function() {
 		if (remote && remote.length) {
 			survive_ws = new WebSocket("ws://" + remote + "/ws");
 		} else if (window.location.protocol === "file:") {
-			survive_ws = new WebSocket("ws://localhost:8080/ws");
+			survive_ws = new WebSocket("ws://localhost:8888/ws");
 		} else {
 			survive_ws = new WebSocket(((window.location.protocol === "https:") ? "wss://" : "ws://") +
 									   window.location.host + "/ws");

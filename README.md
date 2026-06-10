@@ -95,7 +95,9 @@ To stream pose data over WebSocket for the visualization tool (port 8888):
 ```
 docker compose up libsurvive-viz
 ```
-Then open `./tools/viz/index.html` in a browser and point it at `ws://localhost:8888`.
+Then open `./tools/viz/index.html` in a browser. The page connects to `ws://localhost:8888/ws` when opened from disk, so do not open `http://localhost:8888` directly.
+
+If you want to specify the websocket target explicitly, open `file:///path/to/libsurvive/tools/viz/index.html?remote=localhost:8888`.
 
 Calibration data is persisted in `./survive-config/` on the host so subsequent runs are faster.
 
