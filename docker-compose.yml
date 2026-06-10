@@ -19,10 +19,10 @@ services:
       dockerfile: Dockerfile.ros
     entrypoint: ["/bin/bash", "-c"]
     command:
-      - "source /opt/ros/noetic/setup.bash && websocketd --port 8080 survive-cli --record-stdout --record-cal-imu --report-covariance 30"
+      - "source /opt/ros/noetic/setup.bash && websocketd --port 8888 survive-cli --record-stdout --record-cal-imu --report-covariance 30"
     privileged: true
     ports:
-      - "8080:8080"
+      - "8888:8888"
     volumes:
       - /dev:/dev
       - ${HOME}/.config/libsurvive:/root/.config/libsurvive

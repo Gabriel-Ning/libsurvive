@@ -19,29 +19,31 @@ An example application is libsurvive running the controllers and HMD in Godot:
 Table of Contents
 =================
 
-   * [Quick start](#quick-start)
-      * [Debian](#debian)
-      * [Docker](#docker)
-      * [Windows](#windows)
-   * [Current Status](#current-status)
-   * [Roadmap](#roadmap)
-   * [Getting Started](#getting-started)
-      * [Calibration](#calibration)
-      * [Visualization](#visualization)
-      * [libsurvive Tools](#libsurvive-tools)
-      * [Using libsurvive in your own application](#using-libsurvive-in-your-own-application)
-         * [Lower level API](#lower-level-api)
-         * [High level API](#high-level-api)
-         * [Python Bindings](#python-bindings)
-         * [C# Bindings](#c-bindings)
-      * [Data recording](#data-recording)
-         * [Normal recording](#normal-recording)
-         * [Raw USB recording](#raw-usb-recording)
-      * [Common command line flags](#common-command-line-flags)
-   * [Drivers](#drivers)
-      * [Custom Drivers](#custom-drivers)
-   * [FAQ](#faq)
-      * [Addendum and notes](#addendum-and-notes)
+- [libsurvive ](#libsurvive-)
+- [Table of Contents](#table-of-contents)
+- [Quick start](#quick-start)
+  - [Debian](#debian)
+  - [Docker](#docker)
+  - [Windows](#windows)
+- [Current Status](#current-status)
+- [Roadmap](#roadmap)
+- [Getting Started](#getting-started)
+  - [Calibration](#calibration)
+  - [Visualization](#visualization)
+  - [libsurvive Tools](#libsurvive-tools)
+  - [Using libsurvive in your own application](#using-libsurvive-in-your-own-application)
+    - [Lower level API](#lower-level-api)
+    - [High level API](#high-level-api)
+    - [Python Bindings](#python-bindings)
+    - [C# Bindings](#c-bindings)
+  - [Data recording](#data-recording)
+    - [Normal recording](#normal-recording)
+    - [Raw USB recording](#raw-usb-recording)
+  - [Common command line flags](#common-command-line-flags)
+- [Drivers](#drivers)
+  - [Custom Drivers](#custom-drivers)
+- [FAQ](#faq)
+  - [Addendum and notes](#addendum-and-notes)
 
 # Quick start
 
@@ -89,11 +91,11 @@ Plug in your headset / tracker / controller, then **run and calibrate**:
 docker compose run --rm libsurvive
 ```
 
-To stream pose data over WebSocket for the visualization tool (port 8080):
+To stream pose data over WebSocket for the visualization tool (port 8888):
 ```
 docker compose up libsurvive-viz
 ```
-Then open `./tools/viz/index.html` in a browser and point it at `ws://localhost:8080`.
+Then open `./tools/viz/index.html` in a browser and point it at `ws://localhost:8888`.
 
 Calibration data is persisted in `./survive-config/` on the host so subsequent runs are faster.
 
